@@ -2,7 +2,7 @@ import React from 'react';
 
 class Screen extends React.Component {
   render() {
-    return <h2>{this.props.screen}</h2>;
+    return <input value={this.props.screen} readOnly />;
   }
 }
 

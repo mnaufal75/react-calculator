@@ -1,0 +1,19 @@
+body {
+  font-family: sans-serif;
+  background-color: orange;
+}
+
+#outer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.inner {
+  margin-bottom: 10px;
+}
+
+.btn {
+
+}

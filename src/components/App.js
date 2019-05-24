@@ -8,7 +8,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      numberOne: '',
+      numberOne: '0',
       numberTwo: '',
       operation: '',
     };
@@ -40,13 +40,23 @@ class App extends React.Component {
         answer = parseInt(numberOne) + parseInt(numberTwo);
       } else if (operation === '-') {
         answer = parseInt(numberOne) - parseInt(numberTwo);
+      } else if (operation === 'x') {
+        answer = parseInt(numberOne) * parseInt(numberTwo);
+      } else if (operation === '/') {
+        answer = parseInt(numberOne) / parseInt(numberTwo);
       }
 
       this.setState({
-        numberOne: answer,
+        numberOne: answer.toString(10),
         numberTwo: '',
         operation: '',
       });
+    } else if (keyPressed === 'c') {
+      if (!numberTwo) {
+        this.setState({ numberOne: 0 });
+      } else {
+        this.setState({ numberTwo: 0 });
+      }
     } else {
       this.setState({
         operation: keyPressed,
@@ -58,23 +68,36 @@ class App extends React.Component {
     const { numberOne, numberTwo } = this.state;
 
     return (
-      <>
+      <div id="outer">
         <h2>Calculator using React</h2>
-        <Screen screen={numberTwo ? numberTwo : numberOne} />
-        <Button keyButton={1} action={this.handleInput} />
-        <Button keyButton={2} action={this.handleInput} />
-        <Button keyButton={3} action={this.handleInput} />
-        <Button keyButton={4} action={this.handleInput} />
-        <Button keyButton={5} action={this.handleInput} />
-        <Button keyButton={6} action={this.handleInput} />
-        <Button keyButton={7} action={this.handleInput} />
-        <Button keyButton={8} action={this.handleInput} />
-        <Button keyButton={9} action={this.handleInput} />
-        <OpButton keyButton={'+'} action={this.handleOpInput} />
-        <OpButton keyButton={'-'} action={this.handleOpInput} />
-        <OpButton keyButton={'*'} action={this.handleOpInput} />
-        <OpButton keyButton={'='} action={this.handleOpInput} />
-      </>
+        <div className="inner">
+          <Screen screen={numberTwo ? numberTwo : numberOne} />
+        </div>
+        <div className="inner">
+          <Button keyButton={7} action={this.handleInput} />
+          <Button keyButton={8} action={this.handleInput} />
+          <Button keyButton={9} action={this.handleInput} />
+          <OpButton keyButton={'x'} action={this.handleOpInput} />
+        </div>
+        <div className="inner">
+          <Button keyButton={4} action={this.handleInput} />
+          <Button keyButton={5} action={this.handleInput} />
+          <Button keyButton={6} action={this.handleInput} />
+          <OpButton keyButton={'-'} action={this.handleOpInput} />
+        </div>
+        <div className="inner">
+          <Button keyButton={1} action={this.handleInput} />
+          <Button keyButton={2} action={this.handleInput} />
+          <Button keyButton={3} action={this.handleInput} />
+          <OpButton keyButton={'+'} action={this.handleOpInput} />
+        </div>
+        <div className="inner">
+          <Button keyButton={0} action={this.handleInput} />
+          <OpButton keyButton={'c'} action={this.handleOpInput} />
+          <OpButton keyButton={'/'} action={this.handleOpInput} />
+          <OpButton keyButton={'='} action={this.handleOpInput} />
+        </div>
+      </div>
     );
   }
 }
