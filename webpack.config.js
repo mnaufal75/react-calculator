@@ -1,30 +1,44 @@
+var path = require('path');
+
+// const HtmlWebPackPlugin = require("html-webpack-plugin");
 module.exports = {
-  entry: './src/index.js',
-  output: {
-    path: __dirname + '/dist',
-    publicPath: '/',
-    filename: 'bundle.js'
+  entry: [
+    "./src/index.js"
+  ],
+  output:{
+    filename: 'main.js',
+    path: path.resolve(__dirname, '/dist/')
   },
   devServer: {
-    contentBase: './',
     publicPath: '/dist/'
   },
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: ['babel-loader']
-      },
-      {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: {
+          loader: "babel-loader"
+        }
       },
+      // {
+      //   test: /\.html$/,
+      //   use: [
+      //     {
+      //       loader: "html-loader"
+      //     }
+      //   ]
+      // },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: ["style-loader", "css-loader"]
       }
     ]
-  }
+  },
+  // plugins: [
+  //   new HtmlWebPackPlugin({
+  //     template: "./src/index.html",
+  //     filename: "./index.html"
+  //   })
+  // ]
 };
