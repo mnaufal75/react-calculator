@@ -1,0 +1,17 @@
+body {
+  font-family: sans-serif;
+  background-color: orange;
+  margin: 0;
+}
+
+#outer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.inner {
+  margin-bottom: 10px;
+}
