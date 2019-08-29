@@ -29,13 +29,25 @@ class App extends React.Component {
     });
 
     if (!operation) {
-      this.setState({
-        numberOne: numberOne + keyPressed,
-      });
+      if (numberOne === '0') {
+        this.setState({
+          numberOne: keyPressed
+        })
+      } else {
+        this.setState({
+          numberOne: numberOne + keyPressed,
+        });
+      }
     } else {
-      this.setState({
-        numberTwo: numberTwo + keyPressed,
-      });
+      if (numberTwo === '0') {
+        this.setState({
+          numberTwo: keyPressed
+        })
+      } else {
+        this.setState({
+          numberTwo: numberTwo + keyPressed,
+        });
+      }
     }
   }
 
