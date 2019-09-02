@@ -3,7 +3,7 @@ import Button from './Button.js';
 import OpButton from './OpButton.js';
 import Screen from './Screen.js';
 
-import './App.css'
+import './App.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -25,14 +25,14 @@ class App extends React.Component {
     const { numberOne, numberTwo, operation } = this.state;
 
     this.setState({
-      answer: '0'
+      answer: '0',
     });
 
     if (!operation) {
       if (numberOne === '0') {
         this.setState({
-          numberOne: keyPressed
-        })
+          numberOne: keyPressed,
+        });
       } else {
         this.setState({
           numberOne: numberOne + keyPressed,
@@ -41,8 +41,8 @@ class App extends React.Component {
     } else {
       if (numberTwo === '0') {
         this.setState({
-          numberTwo: keyPressed
-        })
+          numberTwo: keyPressed,
+        });
       } else {
         this.setState({
           numberTwo: numberTwo + keyPressed,
@@ -69,7 +69,7 @@ class App extends React.Component {
     const { numberOne, numberTwo, operation } = this.state;
 
     this.setState({
-      answer: '0'
+      answer: '0',
     });
 
     if (keyPressed === '=') {
@@ -95,7 +95,7 @@ class App extends React.Component {
           answer: '0',
           numberOne: answer.toString(10),
           numberTwo: '0',
-          operation: keyPressed
+          operation: keyPressed,
         });
       } else {
         this.setState({
@@ -114,11 +114,11 @@ class App extends React.Component {
         <div className="inner">
           {(() => {
             if (answer !== '0') {
-              return <Screen screen={answer} />
+              return <Screen screen={answer} />;
             } else if (numberTwo === '0') {
-              return <Screen screen={numberOne} />
+              return <Screen screen={numberOne} />;
             } else {
-              return <Screen screen={numberTwo} />
+              return <Screen screen={numberTwo} />;
             }
           })()}
         </div>
