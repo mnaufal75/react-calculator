@@ -54,19 +54,19 @@ class App extends React.Component {
   calculate(numberOne, numberTwo, operation) {
     let answer = 0;
     if (operation === '+') {
-      answer = parseInt(numberOne) + parseInt(numberTwo);
+      answer = parseFloat(numberOne) + parseFloat(numberTwo);
     } else if (operation === '-') {
-      answer = parseInt(numberOne) - parseInt(numberTwo);
+      answer = parseFloat(numberOne) - parseFloat(numberTwo);
     } else if (operation === 'x') {
-      answer = parseInt(numberOne) * parseInt(numberTwo);
+      answer = parseFloat(numberOne) * parseFloat(numberTwo);
     } else if (operation === '/') {
-      answer = parseInt(numberOne) / parseInt(numberTwo);
+      answer = parseFloat(numberOne) / parseFloat(numberTwo);
     }
     return answer;
   }
 
   handleOpInput(keyPressed) {
-    const { numberOne, numberTwo, operation } = this.state;
+    const { numberOne, numberTwo, operation, answer } = this.state;
 
     this.setState({
       answer: '0',
@@ -87,10 +87,39 @@ class App extends React.Component {
       } else {
         this.setState({ numberTwo: '0' });
       }
-    } else {
+    } else if (keyPressed === '.') {
+      if (!operation) {
+        if (numberOne === '0') {
+          this.setState({
+            numberOne: keyPressed,
+          });
+        } else {
+          this.setState({
+            numberOne: numberOne + keyPressed,
+          });
+        }
+      } else {
+        if (numberTwo === '0') {
+          this.setState({
+            numberTwo: keyPressed,
+          });
+        } else {
+          this.setState({
+            numberTwo: numberTwo + keyPressed,
+          });
+        }
+      }
+    } else { // operation == { '+', '-', '*', '/' }
       if (operation) {
-        const answer = this.calculate(numberOne, numberTwo, operation);
+        const tempAnswer = this.calculate(numberOne, numberTwo, operation);
 
+        this.setState({
+          answer: '0',
+          numberOne: tempAnswer.toString(10),
+          numberTwo: '0',
+          operation: keyPressed,
+        });
+      } else if (answer !== '0') {
         this.setState({
           answer: '0',
           numberOne: answer.toString(10),
