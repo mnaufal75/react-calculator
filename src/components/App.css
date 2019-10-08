@@ -1,5 +1,5 @@
 body {
-  font-family: sans-serif;
+  font-family: arial;
   background-color: orange;
   margin: 0;
 }
@@ -13,5 +13,5 @@ body {
 }
 
 .inner {
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }

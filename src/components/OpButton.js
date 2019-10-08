@@ -11,7 +11,7 @@ class OpButton extends React.Component {
 
   render() {
     return (
-      <button onClick={this.handleOnClick.bind(this, this.props.keyButton)}>
+      <button className="btn" onClick={this.handleOnClick.bind(this, this.props.keyButton)}>
         {this.props.keyButton}
       </button>
     );

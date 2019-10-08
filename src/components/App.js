@@ -93,6 +93,8 @@ class App extends React.Component {
           this.setState({
             numberOne: keyPressed,
           });
+        } else if (numberOne.includes('.')) {
+          
         } else {
           this.setState({
             numberOne: numberOne + keyPressed,
@@ -103,6 +105,8 @@ class App extends React.Component {
           this.setState({
             numberTwo: keyPressed,
           });
+        } else if (numberTwo.includes('.')) {
+
         } else {
           this.setState({
             numberTwo: numberTwo + keyPressed,
@@ -139,7 +143,7 @@ class App extends React.Component {
 
     return (
       <div id="outer">
-        <h2>Calculator using React</h2>
+        <h3>Calculator using React</h3>
         <div className="inner">
           {(() => {
             if (answer !== '0') {
@@ -173,6 +177,9 @@ class App extends React.Component {
           <Button keyButton={'0'} action={this.handleInput} />
           <OpButton keyButton={'c'} action={this.handleOpInput} />
           <OpButton keyButton={'/'} action={this.handleOpInput} />
+          <OpButton keyButton={'.'} action={this.handleOpInput} />
+        </div>
+        <div className="inner">
           <OpButton keyButton={'='} action={this.handleOpInput} />
         </div>
       </div>
