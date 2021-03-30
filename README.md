@@ -2,6 +2,8 @@
 
 ![screenshot](screenshot/screenshot.png)
 
+Live [here](https://loving-bassi-b12c01.netlify.app/)
+
 ## Available Scripts
 
 In the project directory, you can run:

@@ -1,7 +1,7 @@
 import React from 'react';
-import Button from './Button.js';
-import OpButton from './OpButton.js';
-import Screen from './Screen.js';
+import Button from './components/Button.js';
+import OpButton from './components/OpButton.js';
+import Screen from './components/Screen.js';
 
 import './App.css';
 
